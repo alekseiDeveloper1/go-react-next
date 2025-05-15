@@ -1,0 +1,10 @@
+root = "."
+watch_dir = "src"
+
+[build]
+
+cmd = "go build -o ./tmp/main ./"
+
+# required on windows, fsnotify is not reliable on windows
+poll = true
+poll_interval = 500

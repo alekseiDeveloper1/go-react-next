@@ -3,9 +3,12 @@ services:
   backend:
     build: .
     ports:
-      - 8000:3000
+      - 8000:8000
     volumes:
-      - .:/app
+      - ./:/app
+    environment:
+      - AIR_USE_POLLING=true
+      - AIR_POLLING_INTERVAL=1000
     depends_on:
       - db
 
