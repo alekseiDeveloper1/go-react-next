@@ -6,6 +6,7 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/cors"
 )
 
 func main() {
@@ -13,6 +14,12 @@ func main() {
 	database.AutoMigrate()
 	// Initialize a new Fiber app
 	app := fiber.New()
+
+	app.Use(cors.New(cors.Config{
+		AllowOriginsFunc: func(origin string) bool {
+			return true // Разрешить все origins
+		},
+	}))
 
 	routes.Setup(app)
 	// Start the server on port 3000
